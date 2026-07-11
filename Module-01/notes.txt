@@ -1,0 +1,6 @@
+Hello world
+# variables
+student_name = "sami"
+
+
+print(student_name)
