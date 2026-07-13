@@ -1,0 +1,4 @@
+Hanna: 800.00
+Mussie: 500.00
+Samuel: 300.00
+Abel: 75.00

@@ -1,0 +1,5 @@
+Mussie,300
+Abel,75
+Samuel,300
+Mussie,200
+Hanna,800
