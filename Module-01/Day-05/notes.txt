@@ -1,0 +1,24 @@
+#Extending class
+
+class Account:
+
+    def __init__(self, owner, balance=0):
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance += amount
+
+
+class SavingAccount(Account):
+    def __init__(self, owner, balance=0, interest=0):
+        super().__init__(owner,balance)
+        self.interest = interest
+
+    def add_interest(self):
+        return self.balance * self.interest
+    
+
+kidist = SavingAccount('kidist', 1000, 0.7)
+
+kidist.add_interest
