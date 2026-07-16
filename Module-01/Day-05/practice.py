@@ -37,7 +37,7 @@ class Car(Vehicle):
 
 def main():
     vehicles = [
-       Car("Toyota", "Corolla"),
+       Car("Toyota", "Camry"),
        Truck("Volvo", "FH12", 20),
        Car("Honda", "Civic"),
        Truck("Mercedes", "Actros", 30)
