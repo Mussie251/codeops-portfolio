@@ -1,4 +1,4 @@
-#The Account Family
+#The Account Class
 class Account:
     def __init__(self, owner, account_number, balance=0):
         self.owner = owner
@@ -66,14 +66,24 @@ class CurrentAccount(Account):
 
     def statement(self):
         print(f"Current Account | owner: {self.owner}, Account_number: {self.account_number}, Balance: {self.balance}")
-# Testing the Account Family
+# Testing the Account class
 Almaz = SavingsAccount("Almaz", "123456789", 1000)  
 Samuel = CurrentAccount("Samuel", "987654321", 500)
 
 
+#Almaz.deposit(200)
+#Samuel.withdraw(600)  # Should print "Insufficient funds for withdrawal."
+#Almaz.withdraw(300)
+
+
+#print(Almaz.balance)  # Should print 900
+#print(Samuel.balance)  # Should print 500
+#print(Almaz.add_interest())  # Should add interest to Almaz's account
+#print(Almaz.balance)  # Should print the updated balance with interest
+
 Samuel.withdraw(1000)
 Almaz.add_interest() 
-
+#print(Almaz.balance) #prints the balance with interest
 
 accounts = [Samuel, Almaz]
 
