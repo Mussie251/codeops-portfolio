@@ -1,4 +1,4 @@
-#Refactor with pattern
+#The Account Registry
 
 from abc import ABC
 
