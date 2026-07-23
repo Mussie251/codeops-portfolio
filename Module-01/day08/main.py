@@ -1,279 +1,284 @@
-# # Binary Search Tree
-class TreeNode:
-  def __init__(self, data):
-    self.data = data
-    self.left = None
-    self.right = None
+#The Account Registry
 
-def inOrderTraversal(node):
-  if node is None:
-    return
-  inOrderTraversal(node.left)
-  print(node.data, end=", ")
-  inOrderTraversal(node.right)
+from abc import ABC
 
-root = TreeNode(13)
-node7 = TreeNode(7)
-node15 = TreeNode(15)
-node3 = TreeNode(3)
-node8 = TreeNode(8)
-node14 = TreeNode(14)
-node19 = TreeNode(19)
-node18 = TreeNode(18)
+class Account(ABC):
 
-root.left = node7
-root.right = node15
+    def __init__(self, owner, account_number, balance=0):
+        self.owner = owner
+        self.account_number = account_number
+        self._balance = balance
+        self.history = []
 
-node7.left = node3
-node7.right = node8
-
-node15.left = node14
-node15.right = node19
-
-node19.left = node18
-
-# # Traverse
-# inOrderTraversal(root)
-
-
-
-#BST Traversal
-# !In-Order Traversal
-def inorder_traversal(root):
-    if root:
-        inorder_traversal(root.left)
-        print(root.value, end=" ")
-        inorder_traversal(root.right)
-
-
-
-# !Pre-Order Traversal
-def preorder_traversal(root):
-    if root:
-        print(root.value, end=" ")
-        preorder_traversal(root.left)
-        preorder_traversal(root.right)
-
-
-
-# !Post-Order Traversal
-def postorder_traversal(root):
-    if root:
-        postorder_traversal(root.left)
-        postorder_traversal(root.right)
-        print(root.value, end=" ")
-
-
-# !Level Order Traversal
-from collections import deque
-
-def level_order_traversal(root):
-    if not root:
-        return
-    
-    # Initialize a queue with the root node
-    queue = deque([root])
-    
-    while queue:
-        # Dequeue the front node
-        node = queue.popleft()
-        print(node.value, end=" ")
+        #Observe list
+        self._observers = []
         
-        # Enqueue left child
-        if node.left:
-            queue.append(node.left)
-            
-        # Enqueue right child
-        if node.right:
-            queue.append(node.right)
+    @property
+    def balance(self):
+        return self._balance
+        
+        #observer pattern
+    def subscribe(self, observer):
+        self._observers.append(observer)
 
+    def notify(self, message):
+        for observer in self._observers:
+            observer.update(message)
 
-
-
-
-
-
-
-
-
-
-#Graph Traversal
-graph = {
-    'A': ['B', 'C'],
-    'B': ['A', 'D', 'E'],
-    'C': ['A', 'F'],
-    'D': ['B'],
-    'E': ['B', 'F'],
-    'F': ['C', 'E']
-}
-
-
-
-# BFS Traversal
-from collections import deque
-
-def bfs(graph, start_node):
-    visited = set()
-    queue = deque([start_node])
-    visited.add(start_node)
+       #Banking method
+    def deposit(self, amount):
+        if amount <= 0:
+            print("Deposit amount must be positive.")
+            return
+        self._balance += amount
+        self.notify(f"{self.owner}: Deposited {amount} ETB. Balance is {self.balance} ETB")
+        self.history.append(("deposit", amount))
     
-    traversal_order = []
+    def withdraw(self, amount):
+        if amount <= 0:
+            print("Withdrawal amount must be positive")
+            return
+        if amount >= self.balance:
+            print("Insufficient balance")
+            return
+        self._balance -= amount
+        self.notify(f"{self.owner}: withdrew {amount} ETB. Balance is {self.balance} ETB.")
+        self.history.append(("withdraw", amount))
+    def undo_last(self):
+        if not self.history:
+            print("Nothing to undo")
+            return
+        action, amount = self.history.pop()
+        if action == "deposit":
+            self._balance -= amount
+        elif action == "withdraw":
+            self._balance += amount
+    def __str__(self):
+        return (
+            f"{self.owner} | "
+            f"Account: {self.account_number} | "
+            f"Balance: {self.balance:.2f} ETB"
+        )
+    def statement(self):
+        print("/" * 40)
+        print(f"Owner: {self.owner}")
+        print(f"Account Number: {self.account_number}")
+        print(f"Balance: {self.balance} ETB")
+        print(f"History: {self.history}")
+        print("\ " * 40)
 
-    while queue:
-        current_node = queue.popleft()
-        traversal_order.append(current_node)
+    def total_transactions(self):
 
-        # Visit all unvisited neighbors
-        for neighbor in graph[current_node]:
-            if neighbor not in visited:
-                visited.add(neighbor)
-                queue.append(neighbor)
-                
-    return traversal_order
+        def recursive(history):
 
-# Example usage:
-print("BFS Traversal:", bfs(graph, 'A'))
-Output: ['A', 'B', 'C', 'D', 'E', 'F']
+            if len(history) == 0:
+                return 0
+            return 1 + recursive(history[1:])
+        return recursive(self.history)
 
-
-
-
-# DFS Traversal
-def dfs_iterative(graph, start_node):
-    visited = set()
-    stack = [start_node]
-    traversal_order = []
-
-    while stack:
-        current_node = stack.pop()
-
-        if current_node not in visited:
-            visited.add(current_node)
-            traversal_order.append(current_node)
-
-            # Add neighbors to stack (reverse to maintain left-to-right order)
-            for neighbor in reversed(graph[current_node]):
-                if neighbor not in visited:
-                    stack.append(neighbor)
-
-    return traversal_order
-
-# # Example usage:
-print("DFS (Iterative) Traversal:", dfs_iterative(graph, 'A'))
-
-
-
-
-
-
-
-
-# !Heap implementation 
-# ! 1. Using a standard heapq library
-import heapq
-
-# *1. Initialize an empty heap
-min_heap = []
-
-# *2. Push elements
-heapq.heappush(min_heap, 10)
-heapq.heappush(min_heap, 4)
-heapq.heappush(min_heap, 15)
-heapq.heappush(min_heap, 1)
-
-print("Heap after pushes:", min_heap) # Output: [1, 4, 15, 10] (Root is always the minimum)
-
-# *3. Pop elements (always returns the smallest)
-smallest = heapq.heappop(min_heap)
-print("Popped element:", smallest)  # Output: 1
-print("Heap after pop:", min_heap)
-
-# *4. Heapify an existing list in O(n) time
-numbers = [20, 5, 12, 3, 7]
-heapq.heapify(numbers)
-print("Heapified list:", numbers)
-
-# *5. Max-Heap Workaround
-# # heapq only supports min-heaps. To simulate a max-heap, multiply values by -1.
-max_heap = []
-for val in [10, 4, 15, 1]:
-    heapq.heappush(max_heap, -val)
-
-# # To get the maximum value back, multiply by -1 again
-max_element = -heapq.heappop(max_heap)
-print("Max element:", max_element)  # Output: 15
-
-
-
-
-# !2. Manual implementation
-class MinHeap:
+class AccountRegistry:
     def __init__(self):
-        self.heap = []
+        self.accounts = {}
 
-    def _parent(self, i):
-        return (i - 1) // 2
+    def add(self, account):
+        self.accounts[account.account_number] = account
 
-    def _left_child(self, i):
-        return 2 * i + 1
+    def find(self, account_number):
+        return self.accounts.get(account_number)
+    
+    def list_all(self):
+        return sorted(self.accounts.values(),key=lambda account: account.account_number)
 
-    def _right_child(self, i):
-        return 2 * i + 2
+    def top_by_balance(self, n):
+        return sorted(self.accounts.values(),
+                      key=lambda account: account.balance,
+                      reverse=True)[:n]
 
-    def swap(self, i, j):
-        self.heap[i], self.heap[j] = self.heap[j], self.heap[i]
+    def binary_search(self, sorted_accounts, account_number):
+        left = 0
+        right = len(sorted_accounts) - 1
 
-    def insert(self, key):
-        """Add a key to the heap and bubble it up."""
-        self.heap.append(key)
-        self._sift_up(len(self.heap) - 1)
+        while left <= right:
+            mid = (left + right) // 2
+            current = sorted_accounts[mid]
 
-    def extract_min(self):
-        """Remove and return the minimum element (root) from the heap."""
-        if not self.heap:
-            return None
-        if len(self.heap) == 1:
-            return self.heap.pop()
+            if current.account_number == account_number:
+                return current
+            elif account_number < current.account_number:
+                right = mid - 1
 
-        root = self.heap[0]
-        # Move the last element to the root and sift down
-        self.heap[0] = self.heap.pop()
-        self._sift_down(0)
-        return root
+            else:
+                left = mid + 1
 
-    def _sift_up(self, i):
-        """Move node up until heap property is restored."""
-        parent = self._parent(i)
-        while i > 0 and self.heap[i] < self.heap[parent]:
-            self.swap(i, parent)
-            i = parent
-            parent = self._parent(i)
+        return None
 
-    def _sift_down(self, i):
-        """Move node down until heap property is restored."""
-        min_index = i
-        left = self._left_child(i)
-        right = self._right_child(i)
-        size = len(self.heap)
+    def find_by_number(self, account_number):
 
-        if left < size and self.heap[left] < self.heap[min_index]:
-            min_index = left
-        if right < size and self.heap[right] < self.heap[min_index]:
-            min_index = right
+        sorted_accounts = sorted(self.accounts.values(),
+                                 key=lambda account: account.account_number)
 
-        if i != min_index:
-            self.swap(i, min_index)
-            self._sift_down(min_index)
+        return self.binary_search(sorted_accounts, account_number)        
 
-    def peek(self):
-        """Return the minimum element without removing it."""
-        return self.heap[0] if self.heap else None
 
-# # --- Testing the Custom Heap ---
-h = MinHeap()
-for num in [10, 4, 15, 1, 20]:
-    h.insert(num)
 
-print("Custom Heap Root (Min):", h.peek())  # Output: 1
-print("Extracted Min:", h.extract_min())    # Output: 1
-print("New Root after extraction:", h.peek()) # Output: 4
+    
+class SavingsAccount(Account):
+    def __init__(self, owner, account_number, rate, balance=0):
+        super().__init__(owner, account_number, balance)
+        self.rate = rate
+
+    def add_interest(self):
+        interest = self.balance * self.rate
+
+        #Reusing deposit
+        self.deposit(interest)
+
+class CurrentAccount(Account):
+    def __init__(self, owner, account_number, overdraft, balance=0):
+        super().__init__(owner, account_number, balance)
+        self.overdraft = overdraft        
+    
+    def withdraw(self, amount):
+        if amount <= 0:
+            print("withdrawal amount must be positive.")
+            return
+        if amount > self.balance + self.overdraft:
+            print("Over limit exceeded.")
+            return
+        self._balance -= amount
+        self.notify(
+            f"{self.owner}: withdrew {amount} ETB."
+            f"Balance = {self.balance} ETB."
+        )
+
+#Observer interface
+class AlertService:
+    
+    def update(self, message):
+        raise NotImplementedError
+    
+#Concerete Observer
+class SMSAlert(AlertService):
+    def update(self, message):
+        print(f"[SMS ALERT] {message}")
+
+class AccountFactory:
+
+    @staticmethod
+    def create(kind, owner, account_number, **kwargs):
+
+        if kind.lower() == "savings":
+            return SavingsAccount(owner, account_number, 
+                                  kwargs.get("rate", 0.05),
+                                  kwargs.get("balance", 0))
+
+        elif kind.lower() == "current":
+            return CurrentAccount(owner,account_number, 
+                                  kwargs.get("overdraft", 0),
+                                  kwargs.get("balance", 0))
+
+        else:
+            raise ValueError("Unkown account type.") 
+        
+def main():
+
+    sms = SMSAlert()
+
+    #Factory pattern
+    savings = AccountFactory.create(
+        "savings",
+        "Abel",
+        "S-1001",
+        balance=5000,
+        rate=0.10
+    )
+
+    current = AccountFactory.create(
+        "current",
+        "Sara",
+        "C-1001",
+        balance=2000,
+        overdraft=1000
+    )
+    #Observer pattern
+    savings.subscribe(sms)
+    current.subscribe(sms)
+
+    print("--------- Savings Account ----------")
+    print(savings)
+
+    savings.deposit(500)
+    savings.withdraw(1000)
+    savings.add_interest()
+
+    print()
+
+    print("---------- Current Account ----------")
+    print(current)
+
+    current.deposit(500)
+    current.withdraw(2800)
+    current.withdraw(1000)
+    
+    print()
+
+    print("---------- Final Balances -----------")
+    print(savings)
+    print(current)
+
+
+if __name__ == "__main__":
+    main() 
+    
+
+registry = AccountRegistry()
+
+Elias = AccountFactory.create("savings", "Elias", "E-1100", balance=2000, rate=0.05)
+Daniel = AccountFactory.create("savings", "Daniel", "D-1101", balance=500, rate=0.05)
+
+registry.add(Elias)
+registry.add(Daniel)
+
+Elias.deposit(500)
+Elias.deposit(600)
+Elias.withdraw(1000)
+
+
+Daniel.withdraw(800)
+Daniel.withdraw(300)
+Daniel.deposit(1000)
+
+print("Finding account E-1100")
+account = registry.find("E-1100")
+account.statement()
+
+print("undoing the last transaction of Elias")
+Elias.undo_last()
+Elias.statement()
+#All accounts
+
+
+for account in registry.list_all():
+    account.statement()
+
+
+print("\nTop 2 Accounts by Balance")
+
+leaders = registry.top_by_balance(2)
+
+for account in leaders:
+    print(account)
+
+print("\nSearching using Binary Search")
+found = registry.find_by_number("D-1101")
+
+if found:
+    print(found)
+
+else:
+    print("Account not Found")
+
+print("\nTransactions total")
+
+print(Elias.total_transactions())
+print(Daniel.total_transactions())
