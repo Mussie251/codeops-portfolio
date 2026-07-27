@@ -12,7 +12,7 @@ class Account:
         
 
     def withdraw(self, amount):
-        if amount < 0:
+        if amount <= 0:
             print("Amount must be positive")
         elif amount <= self._balance:
             self._balance -= amount
@@ -55,7 +55,7 @@ class Bank:
         for account in self.accounts:
             if account.account_number == account_number:
                 return account
-            return None
+        return None
 
 bank = Bank()
 
