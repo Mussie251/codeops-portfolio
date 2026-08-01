@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habesha Eatery | Reservation Page</title>
+    <meta name="description" content="Reserve your table at Habesha Eatery. View our traditional Ethiopian menu, make a reservation and find our location.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!...header section starts here...>
+    <header>
+        <h1>Habesha Eatery</h1>
+        <nav aria-label="Main Nvigation">
+            <ul>
+                <li><a href="#reservation">Reseve</a>/li>
+                </li><a href="#menu">Menu</a></li>
+                <li><a href="#location">Location</a></li>    
+            </ul>
+        </nav>
+    </header>
+
+    <!...main section starts here...>
+    <main>
+
+        <!...reservation form...>
+        <section id="reservation">
+            <h2>Reserve a Table</h2>
+            <form action="#" method="post">
+                <div>
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required min Length="2">
+                </div>
+                <div>
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="phone">Telephone</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div>
+                    <label for="date">Resevation Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div>
+                    <label for="Party">Party Size</label>
+                    <input type="number" id="party" name="party" min="1" max="20" required>
+                </div>
+                <div>
+                    <label for="requests">Special Requests</label>
+                    <textarea id="requests" name="requests" rows="5" placeholders="Please tell us about allergies, Birthdays, Accessbility needs, etc."></textarea>
+                </div>
+                <button type="submit">Reserve Table</button>
+            </form>
+        </section>
+
+        <!..Menu Table...>
+        <section id="menu">
+            <h2>Today's Menu</h2>
+
+            <table>
+
+                <caption>
+                    Popular Ethiopian Dishes
+                </caption>
+
+                <thead>
+                    <tr>
+                        <th scope="col">Dish</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Doro wat</td>
+                        <td>Spicy chicken stew with onions and berbere spice</td>
+                        <td>420 ETB</td>
+                    </tr>
+                    <tr>
+                        <td>Kitfo</td>
+                        <td>Minced raw beef seasoned with spices and clarified butter</td>
+                        <td>350 ETB</td>
+                    </tr>
+                    <tr>
+                        <td>Shiro</td>
+                        <td>Chickpea stew with garlic, onions, and berbere spice</td>
+                        <td>300 ETB</td>
+                    </tr>
+                    <tr>
+                        <td>Injera</td>
+                        <td>Traditional Ethiopian flatbread made from teff flour</td>
+                        <td>50 ETB</td>
+                    </tr>
+                    <tr>
+                        <td>Tibs</td>
+                        <td>Sautéed meat (beef, lamb, or chicken) with onions and peppers</td>
+                        <td>400 ETB</td>
+                    </tr>
+                    <tr>
+                        <td>Gomen</td>
+                        <td>Collard greens sautéed with garlic and onions</td>
+                        <td>250 ETB</td>
+                    </tr>
+                    <tr>
+                        <td>Atakilt Wat</td>
+                        <td>Vegetable stew with cabbage, carrots, and potatoes</td>
+                        <td>280 ETB</td>
+                    </tr>
+                    <tr>
+                        <td>Tej</td>
+                        <td>Traditional Ethiopian honey wine</td>
+                        <td>150 ETB</td>
+                    </tr>
+                    <tr>
+                        <td>Vegeterian Combos</td>
+                        <td>Combination of vegetarian dishes served with injera</td>
+                        <td>350 ETB</td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </section>
+
+        <!...Media Section...>
+        <section id=""location">
+            <h2>Visit Us</h2>
+
+            <figure>
+
+                <img src="assets/doro-wat.jpg" alt="Traditional Ethiopian Doro Wat served on injera with boiled egg." width="600">
+
+                <figcaption>
+                    One of our signature Ethiopian Dishes.
+                </figcaption>
+            </figure>
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15763.96705921643!2d38.7472896!3d8.972903800000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2set!4v1785589997026!5m2!1sen!2set" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>>
+            
+
+        </section>
+
+
+
+
+       
+    </main>
+
+    <!...footer section starts here...>
+    <footer>
+        <p>&copy; 2024 Habesha Eatery. All rights reserved.</p>
+    </footer>
+    
+</body>
+</html>
