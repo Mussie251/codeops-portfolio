@@ -1,0 +1,257 @@
+/* Reset */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:Arial, Helvetica, sans-serif;
+
+    background:#f4f4f4;
+}
+
+/* ==========================
+   GRID PAGE LAYOUT
+========================== */
+
+.app{
+
+    display:grid;
+
+    grid-template-columns:250px 1fr;
+
+    grid-template-areas:
+
+        "header header"
+        "sidebar main"
+        "footer footer";
+
+    min-height:100vh;
+}
+
+/* Grid Areas */
+
+header{
+
+    grid-area:header;
+
+    background:#00843d;
+
+    color:white;
+
+    padding:15px 25px;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+}
+
+aside{
+
+    grid-area:sidebar;
+
+    background:white;
+
+    padding:20px;
+}
+
+main{
+
+    grid-area:main;
+
+    padding:25px;
+}
+
+footer{
+
+    grid-area:footer;
+
+    background:#222;
+
+    color:white;
+
+    text-align:center;
+
+    padding:20px;
+}
+
+/* ==========================
+   FLEXBOX NAVBAR
+========================== */
+
+header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+nav{
+
+    display:flex;
+
+    gap:20px;
+}
+
+nav a{
+
+    color:white;
+
+    text-decoration:none;
+}
+
+/* ==========================
+   SIDEBAR
+========================== */
+
+aside ul{
+
+    list-style:none;
+
+    margin-top:20px;
+}
+
+aside li{
+
+    margin-bottom:15px;
+}
+
+/* ==========================
+   TOOLBAR
+========================== */
+
+.toolbar{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-bottom:25px;
+
+    flex-wrap:wrap;
+}
+
+.toolbar button{
+
+    padding:10px 18px;
+
+    border:none;
+
+    background:#00843d;
+
+    color:white;
+
+    cursor:pointer;
+
+    border-radius:6px;
+}
+
+/* ==========================
+   RESPONSIVE CARD GRID
+========================== */
+
+.cards{
+
+    display:grid;
+
+    gap:20px;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(220px,1fr));
+}
+
+/* ==========================
+   CARD
+========================== */
+
+.card{
+
+    background:white;
+
+    padding:20px;
+
+    border-radius:10px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    position:relative;
+
+    min-height:180px;
+}
+
+.card p{
+
+    margin-top:auto;
+
+    font-size:1.2rem;
+
+    font-weight:bold;
+}
+
+/* ==========================
+   ABSOLUTE BADGE
+========================== */
+
+.badge{
+
+    position:absolute;
+
+    top:12px;
+
+    right:12px;
+
+    background:red;
+
+    color:white;
+
+    padding:5px 10px;
+
+    border-radius:20px;
+
+    font-size:.8rem;
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media(max-width:700px){
+
+.app{
+
+    grid-template-columns:1fr;
+
+    grid-template-areas:
+
+        "header"
+        "sidebar"
+        "main"
+        "footer";
+}
+
+header{
+
+    flex-direction:column;
+
+    gap:15px;
+}
+
+nav{
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+}
+
+}
+
+grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));

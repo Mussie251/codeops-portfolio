@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Habesha Eatery | Reservations</title>
+
+    <meta name="description"
+          content="Reserve your table at Habesha Eatery in Bole, Addis Ababa.">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Habesha Eatery Reservations</h1>
+
+    <nav aria-label="Main Navigation">
+        <a href="index.html">Reservations</a> |
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<main>
+
+<section>
+
+<h2>Reserve a Table</h2>
+
+<form action="/reserve" method="post">
+
+<div>
+<label for="name">Full Name</label>
+<input
+type="text"
+id="name"
+name="name"
+required>
+</div>
+
+<div>
+<label for="email">Email</label>
+<input
+type="email"
+id="email"
+name="email"
+required>
+</div>
+
+<div>
+<label for="phone">Phone Number</label>
+<input
+type="tel"
+id="phone"
+name="phone"
+required>
+</div>
+
+<div>
+<label for="date">Reservation Date</label>
+<input
+type="date"
+id="date"
+name="date"
+required>
+</div>
+
+<div>
+<label for="party">Party Size</label>
+<input
+type="number"
+id="party"
+name="party"
+min="1"
+max="20"
+required>
+</div>
+
+<div>
+<label for="requests">Special Requests</label>
+
+<textarea
+id="requests"
+name="requests"
+rows="5"></textarea>
+
+</div>
+
+<button type="submit">
+Reserve Table
+</button>
+
+</form>
+
+</section>
+
+<hr>
+
+<section>
+
+<h2>Today's Menu</h2>
+
+<table>
+
+<caption>
+Habesha Eatery Menu (Prices in ETB)
+</caption>
+
+<thead>
+
+<tr>
+<th scope="col">Dish</th>
+<th scope="col">Description</th>
+<th scope="col">Price (ETB)</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+<td>Doro Wat</td>
+<td>Spicy chicken stew with injera</td>
+<td>420</td>
+</tr>
+
+<tr>
+<td>Tibs</td>
+<td>Sautéed beef with vegetables</td>
+<td>390</td>
+</tr>
+
+<tr>
+<td>Shiro</td>
+<td>Ground chickpea stew</td>
+<td>250</td>
+</tr>
+
+<tr>
+<td>Kitfo</td>
+<td>Minced seasoned beef</td>
+<td>470</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</section>
+
+<hr>
+
+<section>
+
+<h2>Featured Dish</h2>
+
+<figure>
+
+<img
+src="images/doro-wot.jpg"
+alt="Traditional Ethiopian Doro Wat served with Injera"
+width="500">
+
+<figcaption>
+Traditional Ethiopian Doro Wat
+</figcaption>
+
+</figure>
+
+<iframe
+title="Map showing Habesha Eatery in Bole, Addis Ababa" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31525.74829406572!2d38.79314355!3d8.998026050000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b851c12dbf2bd%3A0xc4784303dccc5d29!2sBole%203%2F5%2C%20Addis%20Ababa!5e0!3m2!1sen!2set!4v1785941527416!5m2!1sen!2set" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin">
+width="500"
+height="300">
+</iframe>
+
+</section>
+
+</main>
+
+<footer>
+
+<p>Habesha Eatery • Bole • Addis Ababa</p>
+
+</footer>
+
+</body>
+</html>

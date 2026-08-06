@@ -1,0 +1,293 @@
+/* =========================================
+   HABESHA EATERY
+   Shared stylesheet for both pages
+   ========================================= */
+
+
+/* -----------------------------------------
+   1. BASIC PAGE SETUP
+   ----------------------------------------- */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f8f4ec;
+    color: #2d2118;
+    line-height: 1.6;
+}
+
+
+/* -----------------------------------------
+   2. HEADER
+   ----------------------------------------- */
+
+header {
+    background-color: #6b2d1a;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+header h1 {
+    margin: 0 0 15px;
+}
+
+
+/* -----------------------------------------
+   3. NAVIGATION
+   ----------------------------------------- */
+
+nav {
+    background-color: #3d1f14;
+    padding: 12px;
+    text-align: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 0 15px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Important for keyboard accessibility */
+nav a:focus {
+    outline: 3px solid #ffd166;
+    outline-offset: 4px;
+}
+
+
+/* -----------------------------------------
+   4. MAIN CONTENT
+   ----------------------------------------- */
+
+main {
+    width: 90%;
+    max-width: 1000px;
+    margin: 30px auto;
+}
+
+section {
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+}
+
+h2 {
+    color: #6b2d1a;
+    margin-top: 0;
+}
+
+
+/* -----------------------------------------
+   5. FORMS
+   ----------------------------------------- */
+
+form {
+    max-width: 600px;
+}
+
+form div {
+    margin-bottom: 18px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+
+    font: inherit;
+
+    border: 1px solid #777;
+    border-radius: 4px;
+}
+
+
+/* Keyboard accessibility */
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 3px solid #d89b2b;
+    outline-offset: 2px;
+}
+
+
+/* -----------------------------------------
+   6. BUTTON
+   ----------------------------------------- */
+
+button {
+    background-color: #6b2d1a;
+    color: white;
+
+    border: none;
+    border-radius: 4px;
+
+    padding: 12px 22px;
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #8a3a22;
+}
+
+button:focus {
+    outline: 3px solid #d89b2b;
+    outline-offset: 3px;
+}
+
+
+/* -----------------------------------------
+   7. TABLES
+   ----------------------------------------- */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+caption {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+th,
+td {
+    border: 1px solid #bbb;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #6b2d1a;
+    color: white;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f5eee5;
+}
+
+
+/* -----------------------------------------
+   8. IMAGE / MEDIA
+   ----------------------------------------- */
+
+figure {
+    margin: 20px 0;
+}
+
+img {
+    display: block;
+
+    max-width: 100%;
+    height: auto;
+
+    border-radius: 8px;
+}
+
+figcaption {
+    margin-top: 8px;
+    font-style: italic;
+}
+
+
+/* Google Map */
+
+iframe {
+    display: block;
+
+    width: 100%;
+    max-width: 700px;
+
+    border: 0;
+    margin-top: 20px;
+}
+
+
+/* -----------------------------------------
+   9. HORIZONTAL RULE
+   ----------------------------------------- */
+
+hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 30px 0;
+}
+
+
+/* -----------------------------------------
+   10. FOOTER
+   ----------------------------------------- */
+
+footer {
+    background-color: #3d1f14;
+    color: white;
+
+    text-align: center;
+
+    padding: 20px;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+}
+
+
+/* -----------------------------------------
+   11. MOBILE RESPONSIVENESS
+   ----------------------------------------- */
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 20px 10px;
+    }
+
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    nav a {
+        display: inline-block;
+        margin: 5px 8px;
+    }
+
+    main {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    section {
+        padding: 18px;
+    }
+
+    th,
+    td {
+        padding: 8px;
+    }
+}

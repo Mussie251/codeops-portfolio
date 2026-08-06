@@ -1,0 +1,25 @@
+*{
+    box-sizing:border-box;
+}
+
+.container{
+
+    display:flex;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+}
+
+.card{
+
+    flex:1;
+
+    min-width:200px;
+
+    padding:40px;
+
+    background:lightgray;
+
+    text-align:center;
+}

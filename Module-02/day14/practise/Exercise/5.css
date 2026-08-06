@@ -1,0 +1,43 @@
+.product{
+
+    position:relative;
+
+    width:280px;
+
+    padding:30px;
+
+    margin:50px auto;
+
+    border:1px solid gray;
+
+    border-radius:10px;
+}
+
+.badge{
+
+    position:absolute;
+
+    top:-15px;
+
+    right:-15px;
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:50%;
+
+    background:red;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    font-size:.8rem;
+}

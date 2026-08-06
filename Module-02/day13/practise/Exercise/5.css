@@ -1,0 +1,62 @@
+/* Original Colors */
+
+.gold {
+    background: #F2C94C;
+}
+
+.green {
+    background: #009A44;
+}
+
+.red {
+    background: #D71920;
+}
+
+/* RGB Versions */
+
+.gold-rgb {
+    background: rgb(242, 201, 76);
+}
+
+.green-rgb {
+    background: rgb(0, 154, 68);
+}
+
+.red-rgb {
+    background: rgb(215, 25, 32);
+}
+
+/* HSL Versions */
+
+.gold-hsl {
+    background: hsl(45, 86%, 62%);
+}
+
+.gold-hsl:hover {
+    background: hsl(45, 86%, 72%);
+}
+
+.green-hsl {
+    background: hsl(146, 100%, 30%);
+}
+
+.green-hsl:hover {
+    background: hsl(146, 100%, 40%);
+}
+
+.red-hsl {
+    background: hsl(358, 79%, 47%);
+}
+
+.red-hsl:hover {
+    background: hsl(358, 79%, 57%);
+}
+
+.color-box {
+    width: 200px;
+    padding: 20px;
+    margin: 10px;
+    color: white;
+    text-align: center;
+    cursor: pointer;
+}

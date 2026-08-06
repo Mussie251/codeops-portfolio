@@ -1,0 +1,74 @@
+.page{
+
+    display:grid;
+
+    min-height:100vh;
+
+    grid-template-columns:220px 1fr;
+
+    grid-template-areas:
+
+        "header header"
+
+        "sidebar main"
+
+        "footer footer";
+}
+
+header{
+
+    grid-area:header;
+
+    background:green;
+
+    color:white;
+
+    padding:20px;
+}
+
+aside{
+
+    grid-area:sidebar;
+
+    background:#dddddd;
+
+    padding:20px;
+}
+
+main{
+
+    grid-area:main;
+
+    padding:20px;
+}
+
+footer{
+
+    grid-area:footer;
+
+    background:black;
+
+    color:white;
+
+    padding:20px;
+}
+
+@media(max-width:700px){
+
+.page{
+
+grid-template-columns:1fr;
+
+grid-template-areas:
+
+"header"
+
+"sidebar"
+
+"main"
+
+"footer";
+
+}
+
+}

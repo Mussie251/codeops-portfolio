@@ -1,0 +1,27 @@
+:root {
+
+    --primary-color: hsl(212,68%,33%);
+    --secondary-color: hsl(45,90%,55%);
+
+    --spacing: 16px;
+
+    --font-stack: Arial, Helvetica, sans-serif;
+
+}
+
+
+.btn {
+
+    background: var(--primary-color);
+
+    color: var(--secondary-color);
+
+    padding: var(--spacing);
+
+    font-family: var(--font-stack);
+
+    border:none;
+
+    border-radius:8px;
+
+}
