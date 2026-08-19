@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Addis Eats Ethiopian food ordering app"
+  >
+
+  <title>Addis Eats | Ethiopian Food</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+
+<body>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header class="site-header">
+
+    <div class="brand">
+
+      <div class="brand-icon" aria-hidden="true">
+        🍽️
+      </div>
+
+      <div>
+        <h1>Addis Eats</h1>
+
+        <p>
+          Ethiopian food, made with love
+        </p>
+      </div>
+
+    </div>
+
+
+    <div class="search-area">
+
+      <label for="search">
+        Search dishes
+      </label>
+
+      <input
+        type="search"
+        id="search"
+        placeholder="Search dishes..."
+        autocomplete="off"
+      >
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       MAIN
+  ========================== -->
+
+  <main>
+
+    <!-- =========================
+         MENU SECTION
+    ========================== -->
+
+    <section
+      id="menu-section"
+      aria-labelledby="menu-heading"
+    >
+
+      <div class="section-heading">
+
+        <div>
+          <p class="eyebrow">
+            OUR MENU
+          </p>
+
+          <h2 id="menu-heading">
+            Ethiopian Favorites
+          </h2>
+        </div>
+
+        <p
+          id="menu-count"
+          class="menu-count"
+        >
+        </p>
+
+      </div>
+
+
+      <!-- Loading / error / dish cards appear here -->
+
+      <div
+        id="menu"
+        class="menu-grid"
+        aria-live="polite"
+      >
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CART
+    ========================== -->
+
+    <aside
+      id="cart"
+      aria-labelledby="cart-heading"
+    >
+
+      <!-- JavaScript renders the cart here -->
+
+    </aside>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer class="site-footer">
+
+    <div>
+
+      <strong>
+        Addis Eats
+      </strong>
+
+      <p>
+        Bole, Addis Ababa · TeleBirr
+      </p>
+
+    </div>
+
+    <p>
+      © 2026 Addis Eats
+    </p>
+
+  </footer>
+
+
+  <script src="app.js"></script>
+
+</body>
+
+</html>
