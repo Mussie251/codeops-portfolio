@@ -859,3 +859,36 @@ main {
   }
 
 }
+
+.payment-method {
+  border: 0;
+  padding: 0;
+  margin: 1.5rem 0;
+}
+
+.payment-method legend {
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.payment-method label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+
+  background: var(--white);
+  cursor: pointer;
+}
+
+.payment-method label:hover {
+  border-color: var(--green);
+}
+
+.payment-method input {
+  accent-color: var(--green);
+}

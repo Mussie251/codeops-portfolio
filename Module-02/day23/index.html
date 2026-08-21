@@ -11,14 +11,13 @@
 
   <meta
     name="description"
-    content="Addis Eats Ethiopian food ordering app"
+    content="Addis Eats - Ethiopian food ordering app"
   >
 
   <title>Addis Eats | Ethiopian Food</title>
 
   <link rel="stylesheet" href="styles.css">
 </head>
-
 
 <body>
 
@@ -30,7 +29,10 @@
 
     <div class="brand">
 
-      <div class="brand-icon" aria-hidden="true">
+      <div
+        class="brand-icon"
+        aria-hidden="true"
+      >
         🍽️
       </div>
 
@@ -44,6 +46,8 @@
 
     </div>
 
+
+    <!-- Search -->
 
     <div class="search-area">
 
@@ -64,7 +68,7 @@
 
 
   <!-- =========================
-       MAIN
+       MAIN CONTENT
   ========================== -->
 
   <main>
@@ -81,6 +85,7 @@
       <div class="section-heading">
 
         <div>
+
           <p class="eyebrow">
             OUR MENU
           </p>
@@ -88,6 +93,7 @@
           <h2 id="menu-heading">
             Ethiopian Favorites
           </h2>
+
         </div>
 
         <p
@@ -99,7 +105,10 @@
       </div>
 
 
-      <!-- Loading / error / dish cards appear here -->
+      <!--
+        JavaScript will load menu.json
+        and create the dish cards here.
+      -->
 
       <div
         id="menu"
@@ -112,7 +121,7 @@
 
 
     <!-- =========================
-         CART
+         CART / CHECKOUT
     ========================== -->
 
     <aside
@@ -120,7 +129,209 @@
       aria-labelledby="cart-heading"
     >
 
-      <!-- JavaScript renders the cart here -->
+      <div class="cart-header">
+
+        <div>
+
+          <p class="eyebrow">
+            YOUR ORDER
+          </p>
+
+          <h2 id="cart-heading">
+            Your Cart
+          </h2>
+
+        </div>
+
+        <span
+          id="cart-count"
+          class="cart-count"
+        >
+          0
+        </span>
+
+      </div>
+
+
+      <!--
+        JavaScript will render cart items here.
+      -->
+
+      <div id="cart-items">
+
+        <p class="empty-cart">
+          Your cart is empty.
+        </p>
+
+      </div>
+
+
+      <!-- =========================
+           CART TOTAL
+      ========================== -->
+
+      <div class="cart-total">
+
+        <span>
+          Total
+        </span>
+
+        <strong id="total">
+          0 ETB
+        </strong>
+
+      </div>
+
+
+      <!-- =========================
+           CHECKOUT FORM
+      ========================== -->
+
+      <form
+        id="checkout-form"
+        novalidate
+      >
+
+        <h3>
+          Checkout
+        </h3>
+
+
+        <!-- Customer Name -->
+
+        <div class="form-group">
+
+          <label for="customer-name">
+            Full Name
+          </label>
+
+          <input
+            type="text"
+            id="customer-name"
+            name="customerName"
+            placeholder="Enter your name"
+            autocomplete="name"
+          >
+
+          <small
+            id="name-error"
+            class="form-error"
+          >
+          </small>
+
+        </div>
+
+
+        <!-- Phone -->
+
+        <div class="form-group">
+
+          <label for="phone">
+            Ethiopian Phone Number
+          </label>
+
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="09XXXXXXXX or +2519XXXXXXXX"
+            autocomplete="tel"
+          >
+
+          <small
+            id="phone-error"
+            class="form-error"
+          >
+          </small>
+
+        </div>
+
+
+        <!-- =========================
+             PAYMENT METHOD
+        ========================== -->
+
+        <fieldset class="payment-method">
+
+          <legend>
+            Payment Method
+          </legend>
+
+
+          <!-- TeleBirr -->
+
+          <label class="payment-option">
+
+            <input
+              type="radio"
+              name="payment"
+              value="telebirr"
+              checked
+            >
+
+            <span>
+              📱 TeleBirr
+            </span>
+
+          </label>
+
+
+          <!-- CBE Birr -->
+
+          <label class="payment-option">
+
+            <input
+              type="radio"
+              name="payment"
+              value="cbe-birr"
+            >
+
+            <span>
+              🏦 CBE Birr
+            </span>
+
+          </label>
+
+
+          <!-- Cash -->
+
+          <label class="payment-option">
+
+            <input
+              type="radio"
+              name="payment"
+              value="cash"
+            >
+
+            <span>
+              💵 Cash on Delivery
+            </span>
+
+          </label>
+
+        </fieldset>
+
+
+        <!-- Checkout error -->
+
+        <p
+          id="checkout-error"
+          class="checkout-error"
+          role="alert"
+        >
+        </p>
+
+
+        <!-- Submit -->
+
+        <button
+          type="submit"
+          class="checkout-button"
+        >
+          Place Order
+        </button>
+
+      </form>
 
     </aside>
 
@@ -140,17 +351,29 @@
       </strong>
 
       <p>
-        Bole, Addis Ababa · TeleBirr
+        Ethiopian food, made with love.
       </p>
 
     </div>
 
-    <p>
-      © 2026 Addis Eats
-    </p>
+    <div>
+
+      <p>
+        Bole, Addis Ababa · Ethiopia
+      </p>
+
+      <p>
+        © 2026 Addis Eats
+      </p>
+
+    </div>
 
   </footer>
 
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
 
   <script src="app.js"></script>
 
