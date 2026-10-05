@@ -1,5 +1,6 @@
 import "./globals.css";
 import Link from "next/link";
+import { CartProvider } from "./cart/CartProvider";
 
 export const metadata = {
   title: "Addis Eats",
@@ -10,21 +11,24 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <header className="site-header">
-          <h1>Addis Eats</h1>
-          <nav>
-            <Link href="/">Home</Link>
-            <Link href="/menu">Menu</Link>
-            <Link href="/cart">Cart</Link>
-            <Link href="/checkout">Checkout</Link>
-          </nav>
-        </header>
+        <CartProvider>
+          <header className="site-header">
+            <h1>Addis Eats</h1>
 
-        <main>{children}</main>
+            <nav>
+              <Link href="/">Home</Link>
+              <Link href="/menu">Menu</Link>
+              <Link href="/cart">Cart</Link>
+              <Link href="/checkout">Checkout</Link>
+            </nav>
+          </header>
 
-        <footer>
-          <p>© 2026 Addis Eats</p>
-        </footer>
+          <main>{children}</main>
+
+          <footer>
+            <p>© 2026 Addis Eats</p>
+          </footer>
+        </CartProvider>
       </body>
     </html>
   );
