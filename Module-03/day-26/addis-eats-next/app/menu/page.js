@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import Link from "next/link";
 
-export const revalidate = 60;
+export const revalidate = 3600;
 
 async function DishList() {
   await new Promise((resolve) => setTimeout(resolve, 800));
