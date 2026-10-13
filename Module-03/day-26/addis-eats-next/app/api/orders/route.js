@@ -4,7 +4,17 @@ import { orderSchema } from "../../../lib/schema";
 import { createOrder } from "../../../lib/db";
 
 export async function POST(request) {
-  const body = await request.json();
+  let body;
+
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json(
+      { message: "Invalid JSON body" },
+      { status: 400 }
+    );
+  }
+
   const result = orderSchema.safeParse(body);
 
   if (!result.success) {
