@@ -1,3 +1,4 @@
+import SearchBox from "./SearchBox";
 import { Suspense } from "react";
 import Link from "next/link";
 
@@ -34,6 +35,7 @@ export default function MenuPage() {
     <section>
       <h2>Our Menu</h2>
       <p>Browse our Ethiopian dishes.</p>
+      <SearchBox />
 
       <Suspense fallback={<p>Loading dishes...</p>}>
         <DishList />
