@@ -56,7 +56,14 @@ export default function CheckoutForm() {
         {pending ? "Placing order..." : "Place Order"}
       </button>
 
-      {state.message && <p>{state.message}</p>}
+      {state.message && <p role="status">{state.message}</p>}
+
+      {state.success && state.orderId && (
+        <p>
+          Order ID: {state.orderId}{" "}
+          <a href={`/orders/${state.orderId}`}>View order status</a>
+        </p>
+      )}
     </form>
   );
 }

@@ -1,13 +1,17 @@
 import "./globals.css";
 import Link from "next/link";
 import { CartProvider } from "./cart/CartProvider";
+import { getSession } from "../lib/session";
+import SignOutButton from "./SignOutButton";
 
 export const metadata = {
   title: "Addis Eats",
   description: "Ethiopian food ordering application built with Next.js",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const session = await getSession();
+
   return (
     <html lang="en">
       <body>
@@ -20,6 +24,19 @@ export default function RootLayout({ children }) {
               <Link href="/menu">Menu</Link>
               <Link href="/cart">Cart</Link>
               <Link href="/checkout">Checkout</Link>
+
+              {session?.role === "staff" && (
+                <Link href="/kitchen">Kitchen</Link>
+              )}
+
+              {session ? (
+                <>
+                  <span>Hi, {session.name}</span>
+                  <SignOutButton />
+                </>
+              ) : (
+                <Link href="/signin">Sign in</Link>
+              )}
             </nav>
           </header>
 

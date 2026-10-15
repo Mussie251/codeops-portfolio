@@ -1,9 +1,17 @@
-
+import { getSession } from "../../../lib/session";
 import { NextResponse } from "next/server";
 import { orderSchema } from "../../../lib/schema";
 import { createOrder } from "../../../lib/db";
 
 export async function POST(request) {
+  const session = await getSession();
+
+if (!session || session.role !== "customer") {
+  return NextResponse.json(
+    { message: "You must sign in with a customer account." },
+    { status: 401 }
+  );
+}
   let body;
 
   try {
@@ -27,7 +35,7 @@ export async function POST(request) {
     );
   }
 
-  const order = await createOrder(result.data);
+  const order = await createOrder(result.data, session.id);
 
   return NextResponse.json(
     { message: "Order created", order },

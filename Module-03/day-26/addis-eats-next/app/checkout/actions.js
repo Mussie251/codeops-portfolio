@@ -4,8 +4,20 @@
 import { revalidatePath } from "next/cache";
 import { orderSchema } from "../../lib/schema";
 import { createOrder } from "../../lib/db";
+import { getSession } from "../../lib/session";
 
 export async function submitOrder(previousState, formData) {
+
+  const session = await getSession();
+
+if (!session || session.role !== "customer") {
+  return {
+    success: false,
+    message: "Please sign in with a customer account to place an order.",
+    errors: {},
+  };
+}
+
   const rawData = {
     name: formData.get("name"),
     phone: formData.get("phone"),
@@ -24,12 +36,16 @@ export async function submitOrder(previousState, formData) {
     };
   }
 
-  await createOrder(result.data);
-  revalidatePath("/checkout");
 
-  return {
-    success: true,
-    message: "Order placed successfully!",
-    errors: {},
-  };
+const order = await createOrder(result.data, session.id);
+
+revalidatePath("/checkout");
+
+return {
+  success: true,
+  message: "Order placed successfully!",
+  orderId: order.id,
+  errors: {},
+};
+
 }

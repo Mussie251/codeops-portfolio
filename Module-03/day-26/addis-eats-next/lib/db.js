@@ -43,15 +43,32 @@ const mockDishes = [
   },
 ];
 
-// In-memory orders store
-const mockOrders = [];
+// Shared in-memory order store for this Node.js process
+const globalForAddisEats = globalThis;
+
+if (!globalForAddisEats.__addisEatsMockOrders) {
+  globalForAddisEats.__addisEatsMockOrders = [];
+}
+
+const mockOrders = globalForAddisEats.__addisEatsMockOrders;
 
 // Mock authenticated user session
-const mockSessionUser = {
-  id: "user_addis_101",
-  name: "Abebe Bikila",
-  email: "abebe@example.com",
-};
+
+const mockUsers = [
+  {
+    id: "user_addis_101",
+    name: "Abebe Bikila",
+    email: "abebe@example.com",
+    role: "customer",
+  },
+  {
+    id: "staff_addis_101",
+    name: "Addis Eats Staff",
+    email: "staff@example.com",
+    role: "staff",
+  },
+];
+
 
 /**
  * ORM-style database query interface
@@ -76,14 +93,20 @@ export async function getDish(id) {
 }
 
 /**
- * Create a new order in memory
+
+/**
+ * Create an order for the authenticated user
  */
-export async function createOrder(data) {
+export async function createOrder(data, userId) {
+  if (!userId) {
+    throw new Error("An authenticated user ID is required.");
+  }
+
   const newOrder = {
     id: `ord_${Math.floor(100 + Math.random() * 900)}`,
     ...data,
     status: "PENDING",
-    userId: mockSessionUser.id,
+    userId,
     createdAt: new Date().toISOString(),
   };
 
@@ -91,10 +114,17 @@ export async function createOrder(data) {
   return newOrder;
 }
 
+
 /**
  * Retrieve a specific order by ID
  */
 export async function getOrder(id) {
+  console.log("[getOrder] Requested ID:", id);
+  console.log(
+    "[getOrder] Available IDs:",
+    mockOrders.map((order) => order.id)
+  );
+
   const order = mockOrders.find((o) => o.id === id);
   return order || null;
 }
@@ -113,9 +143,15 @@ export async function markCancelled(id) {
   return order;
 }
 
-/**
- * Read current authenticated user session
- */
-export async function getSession() {
-  return mockSessionUser;
+
+
+
+export async function getUserByEmail(email) {
+  return mockUsers.find(
+    (user) => user.email.toLowerCase() === email.toLowerCase()
+  ) || null;
+}
+
+export async function getOrdersByUserId(userId) {
+  return mockOrders.filter((order) => order.userId === userId);
 }
