@@ -1,8 +1,15 @@
+
 import "./globals.css";
 import Link from "next/link";
+import { Inter } from "next/font/google";
 import { CartProvider } from "./cart/CartProvider";
 import { getSession } from "../lib/session";
 import SignOutButton from "./SignOutButton";
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata = {
   title: "Addis Eats",
@@ -14,7 +21,7 @@ export default async function RootLayout({ children }) {
 
   return (
     <html lang="en">
-      <body>
+      <body className={inter.className}>
         <CartProvider>
           <header className="site-header">
             <h1>Addis Eats</h1>
