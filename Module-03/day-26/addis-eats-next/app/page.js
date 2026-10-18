@@ -1,5 +1,18 @@
 import Link from "next/link";
 
+
+export const metadata = {
+  title: "Ethiopian Food Delivery in Addis Ababa",
+
+  description:
+    "Discover Ethiopian favourites and order Doro Wot, Shiro Wot, Tibs, Beyaynetu and Kitfo for delivery across Addis Ababa.",
+
+  alternates: {
+    canonical: "/",
+  },
+};
+
+
 export default function HomePage() {
   return (
     <section className="container">

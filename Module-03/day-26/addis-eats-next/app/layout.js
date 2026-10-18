@@ -11,10 +11,30 @@ const inter = Inter({
   display: "swap",
 });
 
+
 export const metadata = {
-  title: "Addis Eats",
-  description: "Ethiopian food ordering application built with Next.js",
+  metadataBase: new URL(
+    process.env.SITE_URL || "http://localhost:3000"
+  ),
+
+  title: {
+    default: "Addis Eats — Ethiopian Food Delivery",
+    template: "%s | Addis Eats",
+  },
+
+  description:
+    "Order Ethiopian favourites including Doro Wot, Shiro Wot, Tibs, Beyaynetu and Kitfo for delivery in Addis Ababa.",
+
+  openGraph: {
+    type: "website",
+    locale: "en_ET",
+    siteName: "Addis Eats",
+    title: "Addis Eats — Ethiopian Food Delivery",
+    description:
+      "Discover Ethiopian dishes and order your favourites for delivery in Addis Ababa.",
+  },
 };
+
 
 export default async function RootLayout({ children }) {
   const session = await getSession();

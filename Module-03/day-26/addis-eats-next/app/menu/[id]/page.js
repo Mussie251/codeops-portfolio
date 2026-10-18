@@ -39,6 +39,29 @@ export function generateStaticParams() {
   return Object.keys(dishes).map((id) => ({ id }));
 }
 
+
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  const dish = dishes[id];
+
+  if (!dish) {
+    return {
+      title: "Dish not found",
+      description: "The requested Ethiopian dish could not be found.",
+    };
+  }
+
+  return {
+    title: dish.name,
+    description: `${dish.name} — ${dish.price} ETB. ${dish.description}`,
+
+    alternates: {
+      canonical: `/menu/${id}`,
+    },
+  };
+}
+
+
 export default async function DishPage({ params }) {
   const { id } = await params;
   const dish = dishes[id];
@@ -47,8 +70,30 @@ export default async function DishPage({ params }) {
     notFound();
   }
 
+  
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "MenuItem",
+  name: dish.name,
+  description: dish.description,
+  offers: {
+    "@type": "Offer",
+    price: dish.price,
+    priceCurrency: "ETB",
+  },
+};
+
+
   return (
     <article className="container">
+      
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
+        }}
+      />
+
       <h2>{dish.name}</h2>
       <p>{dish.description}</p>
       <h3>{dish.price} ETB</h3>

@@ -2,6 +2,17 @@ import SearchBox from "./SearchBox";
 import { Suspense } from "react";
 import Link from "next/link";
 
+export const metadata = {
+  title: "Ethiopian Food Menu",
+
+  description:
+    "Explore Ethiopian dishes including Doro Wot, Shiro Wot, Tibs, Beyaynetu and Kitfo, with prices in Ethiopian birr.",
+
+  alternates: {
+    canonical: "/menu",
+  },
+};
+
 export const revalidate = 3600;
 
 async function DishList() {
