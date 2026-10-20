@@ -22,6 +22,7 @@ if (!session || session.role !== "customer") {
     name: formData.get("name"),
     phone: formData.get("phone"),
     dishId: formData.get("dishId") || undefined,
+    neighbourhood: formData.get("neighbourhood"),
     quantity: Number(formData.get("quantity") || 1),
     notes: formData.get("notes") || undefined,
   };

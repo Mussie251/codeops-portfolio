@@ -97,14 +97,30 @@ export async function getDish(id) {
 /**
  * Create an order for the authenticated user
  */
+
 export async function createOrder(data, userId) {
   if (!userId) {
     throw new Error("An authenticated user ID is required.");
   }
 
+  const dish = data.dishId
+    ? mockDishes.find((item) => item.id === data.dishId)
+    : null;
+
+  if (data.dishId && !dish) {
+    throw new Error("The selected dish does not exist.");
+  }
+
+  const quantity = data.quantity ?? 1;
+  const unitPrice = dish?.price ?? 0;
+
   const newOrder = {
-    id: `ord_${Math.floor(100 + Math.random() * 900)}`,
+    id: `ord_${Date.now()}_${Math.floor(Math.random() * 1000)}`,
     ...data,
+    quantity,
+    unitPrice,
+    total: unitPrice * quantity,
+    dishName: dish?.name ?? "Unspecified dish",
     status: "PENDING",
     userId,
     createdAt: new Date().toISOString(),
@@ -113,6 +129,7 @@ export async function createOrder(data, userId) {
   mockOrders.push(newOrder);
   return newOrder;
 }
+
 
 
 /**
