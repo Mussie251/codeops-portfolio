@@ -1,6 +1,8 @@
 
 "use client";
 
+import { etb } from "../../lib/format";
+
 import {
   ResponsiveContainer,
   BarChart,
@@ -13,8 +15,7 @@ import {
   Tooltip,
 } from "recharts";
 
-const birr = (value) =>
-  `${Number(value).toLocaleString()} ETB`;
+const birr = (value) => etb.format(Number(value) || 0);
 
 export default function RevenueChart({ revenueData, orderData }) {
   return (
